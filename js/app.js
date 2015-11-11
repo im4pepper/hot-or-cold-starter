@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	/* variables */
-	  var randomNumber = 0;
+	var randomNumber = 0;
     var userGuess = 0;
     var guessCount = 0;
     var finish = false;
@@ -32,6 +32,10 @@ $(document).ready(function(){
     /* User attempts counter function */
     function setCount(count){
         $('#count').text(guessCount);
+    }
+
+    function comparisonAmount(){
+
     }
 
     /* Game reset functions */
