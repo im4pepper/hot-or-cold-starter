@@ -17,6 +17,29 @@ $(document).ready(function(){
         if (userGuess / randomNumber === 1){
             setFeedback("You win");
             finish = true;
+        } else if ((userGuess - randomNumber) > 60.5){
+            setFeedback("You're absolutely freezing now!");
+        } else if ((userGuess - randomNumber) > 55.5){
+            setFeedback("Brrr! Its freezing cold!");
+        } else if ((userGuess - randomNumber) > 50.5){
+            setFeedback("You are very cold!");
+        } else if ((userGuess - randomNumber) > 40.5) {
+            setFeedback("You are cold!");
+        } else if ((userGuess - randomNumber) > 30.5) {
+            setFeedback("You're getting warm");
+        } else if((userGuess - randomNumber) > 20.5) {
+            setFeedback("It's getting really warm now!");
+        } else if((userGuess - randomNumber) > 15.5) {
+            setFeedback("You're getting very warm!");
+        } else if ((userGuess - randomNumber) > 7.5){
+            setFeedback("You are hot!");
+        } else if ((userGuess - randomNumber) > 5.5){
+            setFeedback("Yikes! You're really hot!");
+        } else if((userGuess - userGuess) > 1.5){
+            setFeedback("Its burning hot!");
+        }else if ((userGuess - randomNumber) > 0.5){
+            setFeedback("So hot, you can feel the burn of winning!");
+        } else {
         }
     }
 
@@ -24,6 +47,29 @@ $(document).ready(function(){
         if (userGuess / randomNumber === 1){
             setFeedback("You win");
             finish = true;
+          } else if ((userGuess - randomNumber) > 60.5){
+            setFeedback("You're absolutely freezing now!");
+        } else if ((userGuess - randomNumber) > 55.5){
+            setFeedback("Brrr! Its freezing cold!");
+        } else if ((userGuess - randomNumber) > 50.5){
+            setFeedback("You are very cold!");
+        } else if ((userGuess - randomNumber) > 40.5) {
+            setFeedback("You are cold!");
+        } else if ((userGuess - randomNumber) > 30.5) {
+            setFeedback("You're getting warm");
+        } else if((userGuess - randomNumber) > 20.5) {
+            setFeedback("It's getting really warm now!");
+        } else if((userGuess - randomNumber) > 15.5) {
+            setFeedback("You're getting very warm!");
+        } else if ((userGuess - randomNumber) > 7.5){
+            setFeedback("You are hot!");
+        } else if ((userGuess - randomNumber) > 5.5){
+            setFeedback("Yikes! You're really hot!");
+        } else if((userGuess - userGuess) > 1.5){
+            setFeedback("Its burning hot!");
+        }else if ((userGuess - randomNumber) > 0.5){
+            setFeedback("So hot, you can feel the burn of winning!");
+        } else {
         }
     }
 
@@ -64,7 +110,7 @@ $(document).ready(function(){
         $('#count').text(guessCount);
         $('#guessList li').remove();
         randomNumber = (Math.floor(Math.random()*100));
-        /*setFeedback("Make your guess!");*/
+        setFeedback("Make your guess!");
         console.log('it works! The new random number is ' + randomNumber);
     }
 
