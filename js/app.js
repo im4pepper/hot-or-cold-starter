@@ -13,6 +13,20 @@ $(document).ready(function(){
 
     randomNumberGenerator();
 
+    function negativeAmount() {
+        if (userGuess / randomNumber === 1){
+            setFeedback("You win");
+            finish = true;
+        }
+    }
+
+    function positiveAmount() {
+        if (userGuess / randomNumber === 1){
+            setFeedback("You win");
+            finish = true;
+        }
+    }
+
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
@@ -35,7 +49,11 @@ $(document).ready(function(){
     }
 
     function comparisonAmount(){
-
+        if (userGuess - randomNumber > 0) {
+            negativeAmount();
+        } else {
+            positiveAmount();
+        }
     }
 
     /* Game reset functions */
