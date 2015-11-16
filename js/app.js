@@ -1,77 +1,17 @@
 $(document).ready(function(){
 	/* variables */
-	var randomNumber = 0;
+	var randomNumber;
     var userGuess = 0;
     var guessCount = 0;
     var finish = false;
 
   /* Generate a random number to begin play */
     function randomNumberGenerator() {
-        randomNumber = (Math.floor(Math.random()*100));
+        randomNumber = (Math.floor(Math.random()*100) + 1);
         console.log("Random number = " + randomNumber);
     }
 
     randomNumberGenerator();
-
-    function negativeAmount() {
-        if (userGuess / randomNumber === 1){
-            setFeedback("You win");
-            finish = true;
-        } else if ((userGuess - randomNumber) > 60.5){
-            setFeedback("You're absolutely freezing now!");
-        } else if ((userGuess - randomNumber) > 55.5){
-            setFeedback("Brrr! Its freezing cold!");
-        } else if ((userGuess - randomNumber) > 50.5){
-            setFeedback("You are very cold!");
-        } else if ((userGuess - randomNumber) > 40.5) {
-            setFeedback("You are cold!");
-        } else if ((userGuess - randomNumber) > 30.5) {
-            setFeedback("You're getting warm");
-        } else if((userGuess - randomNumber) > 20.5) {
-            setFeedback("It's getting really warm now!");
-        } else if((userGuess - randomNumber) > 15.5) {
-            setFeedback("You're getting very warm!");
-        } else if ((userGuess - randomNumber) > 7.5){
-            setFeedback("You are hot!");
-        } else if ((userGuess - randomNumber) > 5.5){
-            setFeedback("Yikes! You're really hot!");
-        } else if((userGuess - userGuess) > 1.5){
-            setFeedback("Its burning hot!");
-        }else if ((userGuess - randomNumber) > 0.5){
-            setFeedback("So hot, you can feel the burn of winning!");
-        } else {
-        }
-    }
-
-    function positiveAmount() {
-        if (userGuess / randomNumber === 1){
-            setFeedback("You win");
-            finish = true;
-          } else if ((userGuess - randomNumber) > 60.5){
-            setFeedback("You're absolutely freezing now!");
-        } else if ((userGuess - randomNumber) > 55.5){
-            setFeedback("Brrr! Its freezing cold!");
-        } else if ((userGuess - randomNumber) > 50.5){
-            setFeedback("You are very cold!");
-        } else if ((userGuess - randomNumber) > 40.5) {
-            setFeedback("You are cold!");
-        } else if ((userGuess - randomNumber) > 30.5) {
-            setFeedback("You're getting warm");
-        } else if((userGuess - randomNumber) > 20.5) {
-            setFeedback("It's getting really warm now!");
-        } else if((userGuess - randomNumber) > 15.5) {
-            setFeedback("You're getting very warm!");
-        } else if ((userGuess - randomNumber) > 7.5){
-            setFeedback("You are hot!");
-        } else if ((userGuess - randomNumber) > 5.5){
-            setFeedback("Yikes! You're really hot!");
-        } else if((userGuess - userGuess) > 1.5){
-            setFeedback("Its burning hot!");
-        }else if ((userGuess - randomNumber) > 0.5){
-            setFeedback("So hot, you can feel the burn of winning!");
-        } else {
-        }
-    }
 
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
@@ -95,10 +35,23 @@ $(document).ready(function(){
     }
 
     function comparisonAmount(){
-        if (userGuess - randomNumber > 0) {
-            negativeAmount();
-        } else {
-            positiveAmount();
+        var difference = (userGuess - randomNumber);
+
+        if (userGuess == randomNumber){
+            setFeedback("You win!");
+            finish = true;
+        } else if (difference >= 1 && difference <= 3) {
+            setFeedback("So hot you can feel the burn of winning!");
+        } else if (difference < 3 && difference < 10) {
+            setFeedback("You are hot!");
+        } else if (difference < 10 && difference < 20) {
+            setFeedback("You are warm!");
+        } else if (difference < 20 && difference < 35) {
+            setFeedback("Try again!");
+        } else if (difference < 35 && difference < 50) {
+            setFeedback("You are cold!");
+        } else if (difference > 50) {
+            setFeedback("You are freezing cold!");
         }
     }
 
@@ -122,19 +75,19 @@ $(document).ready(function(){
     /* Check user input */
 function checkInput(){
     if(isNaN(userGuess)) {
-        alert("Enter any whole number from 1 - 100!");
+        setFeedback("Enter any whole number from 1 - 100 to play!");
     } else if(userGuess === " ") {
-        alert("You must input a number to play");
-    } else if (userGuess < 0 || userGuess > 100) {
-        alert("Plese enter a number from 1 - 100!");
+        setFeedback("You must input a number to play");
+    } else if (userGuess < 1 || userGuess > 100) {
+        setFeedback("Plese enter a number from 1 - 100!");
     } else {
         comparisonAmount();
-        console.log("User guess = " + userGuess);
+        /*console.log("User guess = " + userGuess);*/
         $('#userGuess').val('');
         guessCount++;
         setCount(guessCount);
         $('ul#guessList').append("<li>" + userGuess + "</li>");
-    console.log("Guess counter is working");
+        /*console.log("Guess counter is working");*/
     }
 }
   /*--- Get user input --*/
@@ -150,5 +103,3 @@ function checkInput(){
     });
 
 });
-
-
