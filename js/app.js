@@ -35,14 +35,15 @@ $(document).ready(function(){
     }
 
     function comparisonAmount(){
-        var difference = (userGuess - randomNumber);
-
+        var difference = userGuess - randomNumber;
+        
         if (userGuess == randomNumber){
             setFeedback("You win!");
             finish = true;
-        } else if (difference >= 1 && difference <= 3) {
+
+        } else if (difference >= 1 && difference <= 2) {
             setFeedback("So hot you can feel the burn of winning!");
-        } else if (difference < 3 && difference < 10) {
+        } else if (difference < 2 && difference < 10) {
             setFeedback("You are hot!");
         } else if (difference < 10 && difference < 20) {
             setFeedback("You are warm!");
@@ -64,7 +65,7 @@ $(document).ready(function(){
         $('#guessList li').remove();
         randomNumber = (Math.floor(Math.random()*100));
         setFeedback("Make your guess!");
-        console.log('it works! The new random number is ' + randomNumber);
+        console.log("The new random number = " + randomNumber);
     }
 
     /* Clear board - begin new game */
