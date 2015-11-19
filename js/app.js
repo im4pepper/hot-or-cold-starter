@@ -35,7 +35,7 @@ $(document).ready(function(){
     }
 
     function comparisonAmount(){
-        var difference = userGuess - randomNumber;
+        var difference = Math.abs(userGuess - randomNumber);
         
         if (userGuess == randomNumber){
             setFeedback("You win!");
@@ -43,13 +43,13 @@ $(document).ready(function(){
 
         } else if (difference >= 1 && difference <= 2) {
             setFeedback("So hot you can feel the burn of winning!");
-        } else if (difference < 2 && difference < 10) {
+        } else if (difference > 2 && difference < 10) {
             setFeedback("You are hot!");
-        } else if (difference < 10 && difference < 20) {
+        } else if (difference > 10 && difference < 20) {
             setFeedback("You are warm!");
-        } else if (difference < 20 && difference < 35) {
+        } else if (difference > 20 && difference < 35) {
             setFeedback("Try again!");
-        } else if (difference < 35 && difference < 50) {
+        } else if (difference > 35 && difference < 50) {
             setFeedback("You are cold!");
         } else if (difference > 50) {
             setFeedback("You are freezing cold!");
@@ -96,7 +96,7 @@ function checkInput(){
         event.preventDefault();
         //if user finished the game, user is not allowed to continue!
         if(!finish){
-            userGuess = $('#userGuess').val();
+            userGuess = Number($('#userGuess').val());
             checkInput();
         } else {
             setFeedback("You've already won! Time to start another game!");
